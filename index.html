@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moonlight Grid | Commissions & Pricelist</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container">
+        <div class="badge">Est. Dec 26, 2025 • Open Since 2024</div>
+        <h1>☾ MOONLIGHT GRID</h1>
+        <p class="subtitle">Graphics • Formats • Academic, Creative & Art Commissions</p>
+        <nav class="nav-tabs">
+          <button class="tab-btn active" data-tab="pricelist">Pricelist & Services</button>
+          <button class="tab-btn" data-tab="calculator">Bundle Comparator</button>
+          <button class="tab-btn" data-tab="about">About & Terms</button>
+          <button class="tab-btn" data-tab="tracker">Order Tracker (Admin)</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- TAB 1: PRICELIST -->
+      <section id="pricelist" class="tab-content active">
+        <div class="toolbar">
+          <div class="category-filters" id="categoryFilters"></div>
+          <div class="admin-controls">
+            <label class="switch-label">
+              <input type="checkbox" id="editModeToggle" />
+              <span>Edit Prices Mode</span>
+            </label>
+            <button id="exportDataBtn" class="btn-secondary hidden">Copy Updated Code Data</button>
+            <button id="resetDataBtn" class="btn-danger hidden">Reset Defaults</button>
+          </div>
+        </div>
+        
+        <div id="pricelistContainer" class="grid-layout"></div>
+      </section>
+
+      <!-- TAB 2: BUNDLE VS INDIVIDUAL COMPARATOR -->
+      <section id="calculator" class="tab-content">
+        <div class="card">
+          <h2>☾ Bundle vs. Individual Calculator</h2>
+          <p class="muted">Select items below to compare individual totals against available bundle rates, add-ons, and rush multipliers.</p>
+        
+          <div class="calc-grid">
+            <div>
+              <h3>1. Choose Services</h3>
+              <select id="calcCategorySelect" class="input-field"></select>
+              <div id="calcItemList" class="checklist"></div>
+            </div>
+            
+            <div class="summary-box">
+              <h3>2. Quote & Bundle Comparison</h3>
+              <div id="selectedItemsSummary" class="selected-list">No items selected yet.</div>
+              
+              <div class="calc-options">
+                <label>
+                  <input type="checkbox" id="affiliationAddon" />
+                  Affiliation Layout (+₱10 per account layout)
+                </label>
+                <label for="rushSelect">Rush Multiplier:</label>
+                <select id="rushSelect" class="input-field">
+                  <option value="1">Standard Turnaround (1x)</option>
+                  <option value="1.25">1.25x (3-Day Graphics/Acad | 2-Day Creative | 5-Day Art)</option>
+                  <option value="1.5">1.5x (2-Day Graphics/Acad | 3-Day Formats/Art | Overnight Creative)</option>
+                  <option value="1.75">1.75x (2-Day Art)</option>
+                  <option value="2">2x (Overnight Graphics/Acad/Art | 2-Day Formats | Same-Day Creative)</option>
+                  <option value="2.5">2.5x (Same-Day Graphics/Acad | Overnight Formats)</option>
+                  <option value="3">3x (Same-Day Formats)</option>
+                </select>
+              </div>
+
+              <div class="totals">
+                <div class="total-row"><span>Base Subtotal:</span> <strong id="baseSubtotal">₱0</strong></div>
+                <div class="total-row"><span>Rush / Add-on Fee:</span> <strong id="addonSubtotal">₱0</strong></div>
+                <div class="total-row grand"><span>Estimated Total:</span> <strong id="grandTotal">₱0</strong></div>
+                <div id="paymentSplitNote" class="note-box"></div>
+                <div id="bundleTipBox" class="tip-box hidden"></div>
+              </div>
+
+              <button id="copyQuoteBtn" class="btn-primary full-width">Copy Quote for Client</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: ABOUT & TERMS -->
+      <section id="about" class="tab-content">
+        <div class="grid-layout">
+          <div class="card">
+            <h2>☾ About Moonlight Grid</h2>
+            <p>Managed by <strong>Fourth and Noir</strong>, Moonlight Grid leverages years of editorial and formatting experience from university publications and roleplaying communities. Officially launched on <strong>December 26, 2025</strong> (with commissions open since 2024), the shop turns client visions into affordable, custom work.</p>
+            <h3>Estimated Completion Time</h3>
+            <ul>
+              <li><strong>Graphics:</strong> 3 days to 1 week</li>
+              <li><strong>Formats:</strong> 1 to 3 days</li>
+            </ul>
+            <p class="muted"><em>Note: Completion times vary depending on complexity and artist availability.</em></p>
+          </div>
+
+          <div class="card">
+            <h2>☾ Order Process</h2>
+            <ol>
+              <li><strong>Inquiry:</strong> Send an inquiry via Moon with commission type, port, IC/OC, style preference, and deadline.</li>
+              <li><strong>Discussion:</strong> Review scope, complexity, completion time, and final quote.</li>
+              <li><strong>Confirmation & Payment:</strong> Slot is reserved upon payment receipt.</li>
+              <li><strong>Creation & Revisions:</strong> Minor revisions included; major layout changes incur extra fees.</li>
+              <li><strong>Completion:</strong> Settle remaining balance to receive final files.</li>
+            </ol>
+          </div>
+
+          <div class="card">
+            <h2>☾ Payment & Terms</h2>
+            <ul>
+              <li><strong>Down Payment:</strong> 50% required for commissions over ₱100; 100% upfront for ₱100 or below.</li>
+              <li><strong>Payment Methods:</strong> GCash, MariBank, and BPI only.</li>
+              <li><strong>Refunds:</strong> No refunds once work begins. 30% refund if cancelled before work starts. 100% refund if the artist misses the agreed deadline.</li>
+              <li><strong>File Retention:</strong> Delivery folders are deleted after 30 days.</li>
+              <li><strong>Commercial Use:</strong> Non-commercial by default. Commercial rights start at +₱1,500.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      
+      <!-- TAB 4: ORDER TRACKER -->
+      <section id="tracker" class="tab-content">
+        <div class="card">
+          <h2>☾ Client Order Tracker</h2>
+          <p class="muted">Track client requests, statuses, deadlines, and payment balances locally in your browser.</p>
+
+          <form id="orderForm" class="order-form">
+            <input type="text" id="clientName" placeholder="Client Name / Handle" required />
+            <input type="text" id="orderDetails" placeholder="Commission Details (e.g., OC Bundle + Bio)" required />
+            <input type="date" id="orderDeadline" required />
+            <input type="number" id="orderPrice" placeholder="Total Price (₱)" min="0" required />
+            <select id="orderPaymentStatus">
+              <option value="Unpaid">Unpaid</option>
+              <option value="50% DP Paid">50% DP Paid</option>
+              <option value="Fully Paid">Fully Paid</option>
+            </select>
+            <select id="orderStatus">
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="For Revision">For Revision</option>
+              <option value="Completed">Completed</option>
+            </select>
+            <button type="submit" class="btn-primary">Add Order</button>
+          </form>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>Request</th>
+                  <th>Deadline</th>
+                  <th>Total</th>
+                  <th>Payment</th>
+                  <th>Balance Due</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="orderTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>☾ Moonlight Grid • Managed by Fourth & Noir</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
